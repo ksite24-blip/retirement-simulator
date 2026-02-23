@@ -682,7 +682,7 @@ export default function GuidePage() {
             </ul>
 
             <Link
-              href="https://buy.stripe.com/dRm00igW7f8E9wN5EvdEs01"
+              href="https://buy.stripe.com/3cI5kC7lxaSo38p7MDdEs02"
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-flex w-full max-w-lg items-center justify-center gap-2 rounded-xl px-8 py-5 text-base sm:text-lg ${ACCENT_BTN}`}
