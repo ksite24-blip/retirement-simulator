@@ -65,7 +65,9 @@ export default function GuidePage() {
           </p>
 
           <Link
-            href="#purchase"
+            href="https://buy.stripe.com/3cI5kC7lxaSo38p7MDdEs02"
+            target="_blank"
+            rel="noopener noreferrer"
             className={`inline-flex items-center gap-2 rounded-xl px-8 py-5 text-lg sm:text-xl ${ACCENT_BTN}`}
           >
             今すぐ「脱出の設計図」を手に入れる →
@@ -753,7 +755,9 @@ export default function GuidePage() {
           </p>
 
           <Link
-            href="#purchase"
+            href="https://buy.stripe.com/3cI5kC7lxaSo38p7MDdEs02"
+            target="_blank"
+            rel="noopener noreferrer"
             className={`inline-flex w-full max-w-lg items-center justify-center gap-2 rounded-xl px-8 py-5 text-lg sm:text-xl ${ACCENT_BTN}`}
           >
             今すぐ「脱出の設計図」を手に入れる →
