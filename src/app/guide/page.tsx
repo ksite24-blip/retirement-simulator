@@ -763,12 +763,12 @@ export default function GuidePage() {
       <footer className="border-t border-slate-800 bg-slate-950 px-4 py-12">
         <div className="mx-auto max-w-3xl text-center">
           <div className="mb-6 flex flex-wrap justify-center gap-6">
-            <a href="#" className="text-sm text-slate-400 underline transition hover:text-teal-400">
+            <Link href="/tokushoho" className="text-sm text-slate-400 underline transition hover:text-teal-400">
               特定商取引法に基づく表記
-            </a>
-            <a href="#" className="text-sm text-slate-400 underline transition hover:text-teal-400">
+            </Link>
+            <Link href="/privacy" className="text-sm text-slate-400 underline transition hover:text-teal-400">
               プライバシーポリシー
-            </a>
+            </Link>
           </div>
           <p className="mb-3 text-xs text-slate-600">
             ※本コンテンツの無断転載・転売・再配布は禁止しています。
