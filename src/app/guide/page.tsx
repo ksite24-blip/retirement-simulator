@@ -678,7 +678,9 @@ export default function GuidePage() {
             </ul>
 
             <Link
-              href="#"
+              href="https://buy.stripe.com/dRm00igW7f8E9wN5EvdEs01"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`inline-flex w-full max-w-lg items-center justify-center gap-2 rounded-xl px-8 py-5 text-base sm:text-lg ${ACCENT_BTN}`}
             >
               工場から抜け出す『3日で退職準備ノート』を購入する
