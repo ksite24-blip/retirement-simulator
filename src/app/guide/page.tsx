@@ -36,7 +36,7 @@ export default function GuidePage() {
           {/* ⚠️ launch banner */}
           <div className="mb-10 inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-5 py-2 backdrop-blur-sm">
             <span className="text-sm font-bold text-amber-400 sm:text-base">
-              ⚠️ ローンチ記念価格は予告なく終了します
+              🌸 転職シーズンキャンペーン実施中 ／ 予告なく終了する可能性あり
             </span>
           </div>
 
@@ -72,7 +72,7 @@ export default function GuidePage() {
           </Link>
 
           <p className="mt-4 text-sm text-slate-400">
-            ※ Notion + PDF版セット / 1,480円（税込）/ 購入後すぐ利用可能
+            ※ Notion + PDF版セット / キャンペーン価格1,980円（税込）/ 購入後すぐ利用可能
           </p>
         </div>
       </section>
@@ -649,17 +649,21 @@ export default function GuidePage() {
             <p className="mb-10 text-slate-400">くらいは、普通にかかってきます。</p>
 
             <div className="mb-8 border-t border-slate-700 pt-10">
+              {/* キャンペーンバッジ */}
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-400/40 bg-teal-400/10 px-4 py-2">
+                <span className="text-sm font-bold text-teal-400">🌸 転職シーズンキャンペーン実施中</span>
+              </div>
               <p className="mb-1 text-lg text-slate-400">
-                通常価格：<span className="line-through">1,980円</span>（税込）
+                通常価格：<span className="line-through">3,980円</span>（税込）
               </p>
               <p className="mb-4 font-bold text-amber-400">
-                👇 ローンチ記念(予告なく終了する可能性あり)
+                👇 キャンペーン価格（予告なく終了する可能性あり）
               </p>
               <p
                 className="font-black leading-none text-teal-400"
                 style={{ fontSize: "clamp(4rem, 18vw, 8rem)" }}
               >
-                1,480円
+                1,980円
               </p>
               <p className="mt-2 text-lg text-slate-400">（税込）</p>
             </div>
