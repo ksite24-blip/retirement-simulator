@@ -209,6 +209,17 @@ export default function TaishokuSimulatorPage() {
       </header>
 
       <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-10">
+
+        {/* 上部CTA */}
+        <div className="mb-8">
+          <Link
+            href="/guide"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-4 text-base font-bold text-white shadow-[0_6px_0_#065f46] transition-all active:translate-y-1 active:shadow-[0_2px_0_#065f46] hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 sm:py-5 sm:text-lg"
+          >
+            今の職場を脱出する計画を立てる →
+          </Link>
+        </div>
+
         {/* 入力セクション */}
         <section className="mb-10">
           <h2 className="mb-4 text-sm font-medium uppercase tracking-wider text-neutral-500">
@@ -407,9 +418,9 @@ export default function TaishokuSimulatorPage() {
             <div className="pt-2">
               <Link
                 href="/guide"
-                className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-neutral-800 bg-neutral-800 px-6 py-4 text-base font-semibold text-white shadow-sm transition hover:bg-neutral-700 focus:outline-none focus:ring-2 focus:ring-neutral-500 focus:ring-offset-2 sm:py-5 sm:text-lg"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-4 text-base font-bold text-white shadow-[0_6px_0_#065f46] transition-all active:translate-y-1 active:shadow-[0_2px_0_#065f46] hover:bg-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 sm:py-5 sm:text-lg"
               >
-                あなたの脱出計画を具体化する
+                今の職場を脱出する計画を立てる →
               </Link>
               <p className="mt-2 text-center text-xs text-neutral-500">
                 退職の流れ・有給・失業保険をまとめた完全ガイドへ
