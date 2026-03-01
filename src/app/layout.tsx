@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { PHProvider } from "./providers";
 
 export const metadata: Metadata = {
   title: "退職シミュレーター | 有給・失業保険の目安試算",
@@ -15,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className="scroll-smooth">
       <body className="min-h-screen antialiased font-sans text-neutral-800">
-        {children}
+        <PHProvider>{children}</PHProvider>
       </body>
     </html>
   );
