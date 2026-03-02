@@ -58,11 +58,28 @@ export default function GuidePage() {
             実践型ノートが完成しました。
           </p>
 
-          <p className="mb-10 text-base leading-relaxed text-slate-300 sm:text-lg">
+          <p className="mb-6 text-base leading-relaxed text-slate-300 sm:text-lg">
             元・工場勤務者が実際に使った「退職までの設計図」を
             <br />
             あなた専用にカスタマイズできる書き込み式ノート
           </p>
+
+          {/* 3日後の状態 */}
+          <div className="mb-10 rounded-2xl border border-teal-400/30 bg-teal-400/10 px-6 py-5 text-left">
+            <p className="mb-3 text-sm font-bold text-teal-400 tracking-wider">📅 このノートを使い終えた3日後、あなたは：</p>
+            <ul className="space-y-2">
+              {[
+                "「なぜ辞めたいのか」を、感情ではなく言葉で説明できる状態になっている",
+                "今辞めたら生活が詰むのか、貯金があれば大丈夫なのかが数字で分かっている",
+                "退職を伝える日・相手・セリフが、台本レベルで決まっている",
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-slate-200 sm:text-base">
+                  <span className="shrink-0 text-teal-400 font-bold">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
 
           <Link
             href="https://buy.stripe.com/3cI5kC7lxaSo38p7MDdEs02"
@@ -268,6 +285,14 @@ export default function GuidePage() {
               そこで必要だったのは、「勢いで辞める勇気」ではなく、
               <br />
               &#34;致命傷を避けながら抜け出すための、3日間の準備&#34;でした。
+            </p>
+          </div>
+
+          {/* 制作者の今 */}
+          <div className="mt-12 rounded-2xl border border-slate-600 bg-slate-800 p-8">
+            <p className="mb-2 text-xs font-bold tracking-wider text-slate-400 uppercase">制作者・笹田 康太 / UNLOOP</p>
+            <p className="text-base leading-relaxed text-slate-300 sm:text-lg">
+              あの日、3日間かけて「なぜ辞めたいか・お金はどうするか・誰にどう伝えるか」を紙に書き出して整理したことで、退職を決断できました。工場を辞めてからWebの仕事を始め、現在はUNLOOPとして活動しています。<span className="font-bold text-white">このノートは、あの3日間の設計図を、誰でも使えるテンプレートにしたものです。</span>
             </p>
           </div>
         </div>
@@ -704,14 +729,23 @@ export default function GuidePage() {
 
             <div className="mb-8 border-t border-slate-700 pt-10">
               {/* キャンペーンバッジ */}
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-teal-400/40 bg-teal-400/10 px-4 py-2">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-teal-400/40 bg-teal-400/10 px-4 py-2">
                 <span className="text-sm font-bold text-teal-400">🌸 転職シーズンキャンペーン実施中</span>
               </div>
+
+              {/* 限定性の理由 */}
+              <div className="mb-6 rounded-xl border border-amber-500/40 bg-amber-500/10 px-5 py-4 text-left">
+                <p className="text-sm font-bold text-amber-400 mb-1">⚠️ このキャンペーンが終わる理由</p>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  3月・4月は転職を考える人が最も多い「転職シーズン」です。この時期に一人でも多くの人に届けたいという思いから、期間限定で値下げしています。<span className="font-bold text-white">転職シーズンが終わる4月以降は、通常価格3,980円に戻します。</span>
+                </p>
+              </div>
+
               <p className="mb-1 text-lg text-slate-400">
                 通常価格：<span className="line-through">3,980円</span>（税込）
               </p>
               <p className="mb-4 font-bold text-amber-400">
-                👇 キャンペーン価格（予告なく終了する可能性あり）
+                👇 転職シーズンキャンペーン価格（4月以降は値上げ予定）
               </p>
               <p
                 className="font-black leading-none text-teal-400"
