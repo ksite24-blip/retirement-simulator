@@ -227,11 +227,11 @@ export default function TaishokuSimulatorPage() {
             {/* 固定幅でガタつきゼロ */}
             <div className="overflow-hidden">
               <p
-                className="text-5xl font-black text-white sm:text-6xl"
+                className="text-6xl font-black text-white sm:text-7xl"
                 style={{
-                  fontFamily: "ui-monospace, monospace",
+                  fontFamily: "'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif",
+                  fontWeight: 900,
                   letterSpacing: "-0.02em",
-                  filter: "blur(10px)",
                   userSelect: "none",
                 }}
               >
@@ -475,7 +475,7 @@ export default function TaishokuSimulatorPage() {
         {/* CTA */}
         <div className="mb-6 rounded-2xl bg-white p-5 shadow-md text-center">
           <p className="text-sm font-bold text-neutral-700 mb-1">📋 次のステップ</p>
-          <p className="text-xs text-neutral-500 mb-4">退職の進め方・有給の使い方・失業保険の手順をまとめた完全ガイドへ</p>
+          <p className="text-xs text-neutral-500 mb-4">3日間で、最短・円満に辞めるためのノウハウが詰まったノートを見る</p>
           <Link
             href="/guide"
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-5 text-lg font-black text-white shadow-[0_6px_0_#065f46] transition-all active:translate-y-1 active:shadow-[0_2px_0_#065f46] hover:bg-emerald-400"
