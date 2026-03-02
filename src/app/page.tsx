@@ -219,7 +219,7 @@ export default function TaishokuSimulatorPage() {
         </p>
 
         <h1
-          className="text-5xl font-black text-neutral-900 mb-4 sm:text-6xl"
+          className="text-4xl font-black text-neutral-900 mb-4 sm:text-5xl"
           style={{
             fontFamily: "'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif",
             fontWeight: 900,
