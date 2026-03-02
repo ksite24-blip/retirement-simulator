@@ -198,69 +198,90 @@ export default function TaishokuSimulatorPage() {
   const animatedUnemployment = useCountUp(result.unemploymentTotal);
   const animatedPaidLeave = useCountUp(Math.round(result.paidLeaveValue));
 
-  // スロット用：常にランダムに動く数字（7桁固定になるよう範囲を統一）
-  const slotMain = useSlotNumber(1000000, 9999999, 70);
+  // 1桁ずつ独立して動くスロットタイル
+  const d1 = useSlotNumber(0, 9, 55);
+  const d2 = useSlotNumber(0, 9, 70);
+  const d3 = useSlotNumber(0, 9, 85);
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-sky-100 to-blue-50 text-neutral-800">
 
-      {/* 緊急バナー */}
-      <div className="bg-orange-500 py-2 text-center text-sm font-bold text-white">
-        🌸 転職シーズン限定｜今すぐ無料で診断できます
+      {/* 警告バナー */}
+      <div className="bg-red-600 py-2 text-center text-sm font-bold text-white tracking-wide">
+        ▲ 転職シーズン中の方はお急ぎください ▲
       </div>
 
-      {/* スロットヒーロー：あなたの数字は？ */}
-      <div className="bg-slate-950 px-4 py-12 text-center">
-        <p className="text-xs font-semibold tracking-[0.25em] text-sky-400 uppercase mb-6">
-          退職したら、あなたはいくら受け取れる？
+      {/* ヒーローセクション */}
+      <div className="bg-gradient-to-b from-sky-200 to-sky-50 px-4 pt-8 pb-10 text-center">
+
+        <p className="text-sm font-bold text-sky-700 mb-2">
+          ＼ 退職したらもらえる金額をチェック ／
         </p>
 
-        {/* 数字エリア */}
-        <div className="relative mx-auto max-w-xs">
-          {/* 背景グロー */}
-          <div className="absolute inset-0 rounded-2xl bg-sky-500/10 blur-xl" />
+        <h1
+          className="text-5xl font-black text-neutral-900 mb-4 sm:text-6xl"
+          style={{ fontFamily: "'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif", fontWeight: 900 }}
+        >
+          退職シミュレーター
+        </h1>
 
-          {/* 数字ボックス */}
-          <div className="relative rounded-2xl border border-slate-700 bg-slate-900 px-6 py-8">
-            <p className="text-xs text-slate-500 mb-3 tracking-wider">失業保険の受給額（目安）</p>
+        {/* 簡単バッジ */}
+        <div className="inline-block rounded-full bg-emerald-500 px-5 py-1.5 text-sm font-bold text-white mb-6 shadow-md">
+          ⚡ 簡単入力 30秒！
+        </div>
 
-            {/* 固定幅でガタつきゼロ */}
-            <div className="overflow-hidden">
-              <p
-                className="text-6xl font-black text-white sm:text-7xl"
+        {/* スロットタイル */}
+        <div className="flex items-center justify-center gap-1 mb-2">
+          {/* 桁タイル × 3 */}
+          {[d1, d2, d3].map((digit, i) => (
+            <div
+              key={i}
+              className="flex h-24 w-16 items-center justify-center rounded-xl bg-slate-800 shadow-[inset_0_2px_8px_rgba(0,0,0,0.5)] sm:h-28 sm:w-20"
+            >
+              <span
+                className="text-5xl font-black text-white sm:text-6xl"
                 style={{
                   fontFamily: "'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif",
                   fontWeight: 900,
-                  letterSpacing: "-0.02em",
                   userSelect: "none",
                 }}
               >
-                ¥{slotMain.toLocaleString()}
-              </p>
+                {digit}
+              </span>
             </div>
+          ))}
 
-            {/* ロックバッジ */}
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-600 bg-slate-800 px-4 py-2">
-              <span className="text-sm">🔒</span>
-              <span className="text-sm font-semibold text-slate-300">診断すると表示されます</span>
-            </div>
+          {/* 単位 */}
+          <span
+            className="ml-2 text-3xl font-black text-neutral-800 sm:text-4xl"
+            style={{ fontFamily: "'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif", fontWeight: 900 }}
+          >
+            万円
+          </span>
+        </div>
+
+        {/* 退職時の受給額ラベル */}
+        <div className="inline-block rounded-full bg-pink-100 border border-pink-300 px-4 py-1 text-sm font-bold text-pink-700 mb-6">
+          退職時の受給額は？
+        </div>
+
+        {/* 信頼バッジ */}
+        <div className="flex justify-center gap-3">
+          <div className="rounded-xl bg-sky-600 px-4 py-2.5 text-sm font-bold text-white shadow-md">
+            ✅ 完全無料
+          </div>
+          <div className="rounded-xl bg-sky-600 px-4 py-2.5 text-sm font-bold text-white shadow-md">
+            ✅ 登録不要
+          </div>
+          <div className="rounded-xl bg-sky-600 px-4 py-2.5 text-sm font-bold text-white shadow-md">
+            ✅ 即時診断
           </div>
         </div>
 
-        <p className="mt-8 text-sm text-slate-500">
-          下の項目を入力してください ↓
+        <p className="mt-6 text-sm font-bold text-sky-700">
+          👇 下の項目を入力すると、あなたの数字が表示されます
         </p>
       </div>
-
-      {/* ヘッダー */}
-      <header className="bg-white shadow-sm">
-        <div className="mx-auto max-w-2xl px-4 py-4 sm:px-6">
-          <p className="text-center text-xs font-medium text-sky-600 tracking-wider uppercase">無料シミュレーター</p>
-          <h1 className="mt-1 text-center text-xl font-bold tracking-tight text-neutral-900 sm:text-2xl">
-            退職したら、いくらもらえる？
-          </h1>
-        </div>
-      </header>
 
       <div className="mx-auto max-w-2xl px-4 py-6 sm:px-6">
 
