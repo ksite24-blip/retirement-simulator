@@ -3,6 +3,18 @@
 import Link from "next/link";
 import { useState, useMemo, useEffect, useRef } from "react";
 
+// ランダムにパラパラ動き続けるスロット数字
+function useSlotNumber(min: number, max: number, interval: number = 80) {
+  const [value, setValue] = useState(min);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setValue(Math.floor(Math.random() * (max - min + 1)) + min);
+    }, interval);
+    return () => clearInterval(timer);
+  }, [min, max, interval]);
+  return value;
+}
+
 function useCountUp(target: number, duration: number = 800) {
   const [display, setDisplay] = useState(target);
   const prevTarget = useRef(target);
@@ -186,12 +198,60 @@ export default function TaishokuSimulatorPage() {
   const animatedUnemployment = useCountUp(result.unemploymentTotal);
   const animatedPaidLeave = useCountUp(Math.round(result.paidLeaveValue));
 
+  // スロット用：常にランダムに動く数字
+  const slotMain = useSlotNumber(300000, 2500000, 60);
+  const slotSub1 = useSlotNumber(10000, 300000, 80);
+  const slotSub2 = useSlotNumber(50, 150, 100);
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-sky-100 to-blue-50 text-neutral-800">
 
       {/* 緊急バナー */}
       <div className="bg-orange-500 py-2 text-center text-sm font-bold text-white">
         🌸 転職シーズン限定｜今すぐ無料で診断できます
+      </div>
+
+      {/* スロットヒーロー：あなたの数字は？ */}
+      <div className="bg-slate-900 px-4 py-10 text-center">
+        <p className="text-xs font-bold tracking-widest text-sky-400 uppercase mb-3">
+          あなたの数字はいくら？
+        </p>
+        <div className="relative inline-block">
+          {/* メイン数字：ランダムにパラパラ */}
+          <p className="text-6xl font-black tabular-nums text-white sm:text-7xl"
+             style={{ fontVariantNumeric: "tabular-nums", letterSpacing: "-0.02em" }}>
+            ¥{slotMain.toLocaleString()}
+          </p>
+          {/* ブラーオーバーレイ */}
+          <div className="absolute inset-0 flex items-center justify-center"
+               style={{ backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}>
+            <span className="text-white text-lg font-bold bg-slate-900/70 px-4 py-2 rounded-full">
+              🔒 診断して確認する
+            </span>
+          </div>
+        </div>
+
+        {/* サブ数字2つもパラパラ */}
+        <div className="mt-4 flex justify-center gap-6">
+          <div className="text-center">
+            <p className="text-xs text-slate-400 mb-1">有給の価値</p>
+            <div className="relative inline-block">
+              <p className="text-2xl font-bold tabular-nums text-white">¥{slotSub1.toLocaleString()}</p>
+              <div className="absolute inset-0" style={{ backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)" }} />
+            </div>
+          </div>
+          <div className="text-center">
+            <p className="text-xs text-slate-400 mb-1">給付日数</p>
+            <div className="relative inline-block">
+              <p className="text-2xl font-bold tabular-nums text-white">{slotSub2}日</p>
+              <div className="absolute inset-0" style={{ backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)" }} />
+            </div>
+          </div>
+        </div>
+
+        <p className="mt-5 text-sm text-slate-400">
+          👇 下の項目を入力すると、あなたの正確な数字が表示されます
+        </p>
       </div>
 
       {/* ヘッダー */}
