@@ -208,7 +208,7 @@ export default function TaishokuSimulatorPage() {
 
       {/* 警告バナー */}
       <div className="bg-red-600 py-2 text-center text-sm font-bold text-white tracking-wide">
-        ▲ 転職シーズン中の方はお急ぎください ▲
+        ▲ 転職シーズン到来！退職前に受給額を必ずチェック ▲
       </div>
 
       {/* ヒーローセクション */}
@@ -220,7 +220,11 @@ export default function TaishokuSimulatorPage() {
 
         <h1
           className="text-5xl font-black text-neutral-900 mb-4 sm:text-6xl"
-          style={{ fontFamily: "'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif", fontWeight: 900 }}
+          style={{
+            fontFamily: "'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif",
+            fontWeight: 900,
+            whiteSpace: "nowrap",
+          }}
         >
           退職シミュレーター
         </h1>
