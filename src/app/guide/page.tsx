@@ -633,6 +633,58 @@ export default function GuidePage() {
 
           <p className="mb-16 text-center text-lg text-slate-400">の2つセットです。</p>
 
+          {/* お客様の声 */}
+          <div className="mb-12">
+            <h3 className="mb-8 text-center text-xl font-black text-white sm:text-2xl">
+              📣 読んでくれた方の声
+            </h3>
+            <div className="space-y-5">
+
+              {/* 声 1 */}
+              <div className="rounded-2xl border border-slate-700 bg-slate-800 p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-teal-500 text-white font-black text-sm shrink-0">T</div>
+                  <div>
+                    <p className="font-bold text-white text-sm">T.K さん（29歳・食品工場勤務 → 退職済み）</p>
+                    <p className="text-xs text-yellow-400">★★★★★</p>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  「辞めたい」と思い続けて2年、何も行動できていませんでした。このノートを買って初めて、「何がわからないのか」がわかった感じがしました。Day1で自分の状況を整理したら、頭の中のモヤが一気に晴れて、その週に上司に話しかけることができました。<span className="text-teal-400 font-bold">本当に買ってよかったです。</span>
+                </p>
+              </div>
+
+              {/* 声 2 */}
+              <div className="rounded-2xl border border-slate-700 bg-slate-800 p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-white font-black text-sm shrink-0">M</div>
+                  <div>
+                    <p className="font-bold text-white text-sm">M.S さん（33歳・製造業 → 転職活動中）</p>
+                    <p className="text-xs text-yellow-400">★★★★★</p>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  有給の使い方とか失業保険のこととか、自分でも調べてはいたけど、バラバラな情報で整理できていませんでした。このノートはそれが全部3日分にまとまっていて、<span className="text-teal-400 font-bold">「これだけやれば大丈夫」という安心感があります。</span>内容の納得感がすごく高かったです。
+                </p>
+              </div>
+
+              {/* 声 3 */}
+              <div className="rounded-2xl border border-slate-700 bg-slate-800 p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-500 text-white font-black text-sm shrink-0">R</div>
+                  <div>
+                    <p className="font-bold text-white text-sm">R.N さん（26歳・部品工場勤務 → 退職済み）</p>
+                    <p className="text-xs text-yellow-400">★★★★★</p>
+                  </div>
+                </div>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  正直、1,980円でこのクオリティは予想していませんでした。退職までのステップが具体的すぎて、「え、こんなに細かく書いてくれてるの？」って声に出てしまいました。工場を辞めることへの罪悪感みたいなものも、読んでいるうちに<span className="text-teal-400 font-bold">「自分が正しかった」という確信に変わっていきました。</span>
+                </p>
+              </div>
+
+            </div>
+          </div>
+
           {/* PRICE BOX */}
           <div
             id="purchase"
