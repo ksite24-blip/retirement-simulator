@@ -198,10 +198,8 @@ export default function TaishokuSimulatorPage() {
   const animatedUnemployment = useCountUp(result.unemploymentTotal);
   const animatedPaidLeave = useCountUp(Math.round(result.paidLeaveValue));
 
-  // スロット用：常にランダムに動く数字
-  const slotMain = useSlotNumber(300000, 2500000, 60);
-  const slotSub1 = useSlotNumber(10000, 300000, 80);
-  const slotSub2 = useSlotNumber(50, 150, 100);
+  // スロット用：常にランダムに動く数字（7桁固定になるよう範囲を統一）
+  const slotMain = useSlotNumber(1000000, 9999999, 70);
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-sky-100 to-blue-50 text-neutral-800">
@@ -212,45 +210,45 @@ export default function TaishokuSimulatorPage() {
       </div>
 
       {/* スロットヒーロー：あなたの数字は？ */}
-      <div className="bg-slate-900 px-4 py-10 text-center">
-        <p className="text-xs font-bold tracking-widest text-sky-400 uppercase mb-3">
-          あなたの数字はいくら？
+      <div className="bg-slate-950 px-4 py-12 text-center">
+        <p className="text-xs font-semibold tracking-[0.25em] text-sky-400 uppercase mb-6">
+          退職したら、あなたはいくら受け取れる？
         </p>
-        <div className="relative inline-block">
-          {/* メイン数字：ランダムにパラパラ */}
-          <p className="text-6xl font-black tabular-nums text-white sm:text-7xl"
-             style={{ fontVariantNumeric: "tabular-nums", letterSpacing: "-0.02em" }}>
-            ¥{slotMain.toLocaleString()}
-          </p>
-          {/* ブラーオーバーレイ */}
-          <div className="absolute inset-0 flex items-center justify-center"
-               style={{ backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)" }}>
-            <span className="text-white text-lg font-bold bg-slate-900/70 px-4 py-2 rounded-full">
-              🔒 診断して確認する
-            </span>
+
+        {/* 数字エリア */}
+        <div className="relative mx-auto max-w-xs">
+          {/* 背景グロー */}
+          <div className="absolute inset-0 rounded-2xl bg-sky-500/10 blur-xl" />
+
+          {/* 数字ボックス */}
+          <div className="relative rounded-2xl border border-slate-700 bg-slate-900 px-6 py-8">
+            <p className="text-xs text-slate-500 mb-3 tracking-wider">失業保険の受給額（目安）</p>
+
+            {/* 固定幅でガタつきゼロ */}
+            <div className="overflow-hidden">
+              <p
+                className="text-5xl font-black text-white sm:text-6xl"
+                style={{
+                  fontFamily: "ui-monospace, monospace",
+                  letterSpacing: "-0.02em",
+                  filter: "blur(10px)",
+                  userSelect: "none",
+                }}
+              >
+                ¥{slotMain.toLocaleString()}
+              </p>
+            </div>
+
+            {/* ロックバッジ */}
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-600 bg-slate-800 px-4 py-2">
+              <span className="text-sm">🔒</span>
+              <span className="text-sm font-semibold text-slate-300">診断すると表示されます</span>
+            </div>
           </div>
         </div>
 
-        {/* サブ数字2つもパラパラ */}
-        <div className="mt-4 flex justify-center gap-6">
-          <div className="text-center">
-            <p className="text-xs text-slate-400 mb-1">有給の価値</p>
-            <div className="relative inline-block">
-              <p className="text-2xl font-bold tabular-nums text-white">¥{slotSub1.toLocaleString()}</p>
-              <div className="absolute inset-0" style={{ backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)" }} />
-            </div>
-          </div>
-          <div className="text-center">
-            <p className="text-xs text-slate-400 mb-1">給付日数</p>
-            <div className="relative inline-block">
-              <p className="text-2xl font-bold tabular-nums text-white">{slotSub2}日</p>
-              <div className="absolute inset-0" style={{ backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)" }} />
-            </div>
-          </div>
-        </div>
-
-        <p className="mt-5 text-sm text-slate-400">
-          👇 下の項目を入力すると、あなたの正確な数字が表示されます
+        <p className="mt-8 text-sm text-slate-500">
+          下の項目を入力してください ↓
         </p>
       </div>
 
