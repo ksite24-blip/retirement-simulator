@@ -1,7 +1,39 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
+
+function useCountUp(target: number, duration: number = 800) {
+  const [display, setDisplay] = useState(target);
+  const prevTarget = useRef(target);
+  const frameRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (prevTarget.current === target) return;
+    const start = prevTarget.current;
+    const diff = target - start;
+    const startTime = performance.now();
+
+    if (frameRef.current) cancelAnimationFrame(frameRef.current);
+
+    function step(now: number) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.round(start + diff * eased));
+      if (progress < 1) {
+        frameRef.current = requestAnimationFrame(step);
+      } else {
+        prevTarget.current = target;
+      }
+    }
+
+    frameRef.current = requestAnimationFrame(step);
+    return () => { if (frameRef.current) cancelAnimationFrame(frameRef.current); };
+  }, [target, duration]);
+
+  return display;
+}
 
 const NOTICE_DAYS = 30;
 const BONUS_MONTHS_SALARY = 1;
@@ -103,6 +135,7 @@ export default function TaishokuSimulatorPage() {
   const [bonusMonthsInput, setBonusMonthsInput] = useState<string>("6, 12");
   const [age, setAge] = useState<string>("35");
   const [yearsOfService, setYearsOfService] = useState<string>("5");
+
   const [leaveReason, setLeaveReason] = useState<LeaveReason>("self");
 
   const result = useMemo(() => {
@@ -150,6 +183,9 @@ export default function TaishokuSimulatorPage() {
     };
   }, [paidLeave, salary, bonusMonthsInput, age, yearsOfService, leaveReason]);
 
+  const animatedUnemployment = useCountUp(result.unemploymentTotal);
+  const animatedPaidLeave = useCountUp(Math.round(result.paidLeaveValue));
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-sky-100 to-blue-50 text-neutral-800">
 
@@ -176,8 +212,8 @@ export default function TaishokuSimulatorPage() {
             ⚡ 簡単入力 30秒！
           </div>
           <p className="text-sm text-neutral-500 mb-2">あなたの失業保険受給額（目安）</p>
-          <p className="text-5xl font-black text-sky-600 tracking-tight">
-            ¥{result.unemploymentTotal.toLocaleString()}
+          <p className="text-5xl font-black text-sky-600 tracking-tight tabular-nums">
+            ¥{animatedUnemployment.toLocaleString()}
           </p>
           <p className="mt-1 text-xs text-neutral-400">※ 下の項目を入力すると自動で更新されます</p>
 
@@ -310,8 +346,8 @@ export default function TaishokuSimulatorPage() {
             {/* メイン：失業保険 */}
             <div className="rounded-2xl bg-white p-5 shadow-md border-l-4 border-sky-500">
               <p className="text-xs font-bold text-sky-600 uppercase tracking-wider">失業保険（基本手当）</p>
-              <p className="mt-2 text-4xl font-black text-neutral-900">
-                ¥{result.unemploymentTotal.toLocaleString()}
+              <p className="mt-2 text-4xl font-black text-neutral-900 tabular-nums">
+                ¥{animatedUnemployment.toLocaleString()}
               </p>
               <div className="mt-3 grid grid-cols-3 gap-2 text-center">
                 <div className="rounded-lg bg-sky-50 p-2">
@@ -337,8 +373,8 @@ export default function TaishokuSimulatorPage() {
             {/* 有給 */}
             <div className="rounded-2xl bg-white p-5 shadow-md border-l-4 border-emerald-500">
               <p className="text-xs font-bold text-emerald-600 uppercase tracking-wider">有給休暇の価値</p>
-              <p className="mt-2 text-3xl font-black text-neutral-900">
-                ¥{Math.round(result.paidLeaveValue).toLocaleString()}
+              <p className="mt-2 text-3xl font-black text-neutral-900 tabular-nums">
+                ¥{animatedPaidLeave.toLocaleString()}
               </p>
               <p className="mt-1 text-xs text-neutral-500">{result.paidLeaveNum}日分 / 請求する権利があります</p>
             </div>
