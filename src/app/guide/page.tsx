@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { TrackLink } from "./TrackLink";
 
 export const metadata = {
   title: "脱出の設計図 | このまま10年働く自分を想像してゾッとしたあなたへ",
@@ -81,14 +82,15 @@ export default function GuidePage() {
             </ul>
           </div>
 
-          <Link
+          <TrackLink
             href="https://buy.stripe.com/3cI5kC7lxaSo38p7MDdEs02"
             target="_blank"
             rel="noopener noreferrer"
+            location="hero"
             className={`inline-flex items-center gap-2 rounded-xl px-8 py-5 text-lg sm:text-xl ${ACCENT_BTN}`}
           >
             今すぐ「脱出の設計図」を手に入れる →
-          </Link>
+          </TrackLink>
 
           <p className="mt-4 text-sm text-slate-400">
             ※ Notion + PDF版セット / キャンペーン価格1,980円（税込）/ 購入後すぐ利用可能
@@ -769,14 +771,15 @@ export default function GuidePage() {
               ))}
             </ul>
 
-            <Link
+            <TrackLink
               href="https://buy.stripe.com/3cI5kC7lxaSo38p7MDdEs02"
               target="_blank"
               rel="noopener noreferrer"
+              location="price_section"
               className={`inline-flex w-full max-w-lg items-center justify-center gap-2 rounded-xl px-8 py-5 text-base sm:text-lg ${ACCENT_BTN}`}
             >
               工場から抜け出す『3日で退職準備ノート』を購入する
-            </Link>
+            </TrackLink>
           </div>
         </div>
       </section>
@@ -840,14 +843,15 @@ export default function GuidePage() {
             たった3日だけ、自分の人生と本気で向き合う時間を作ってみてください。
           </p>
 
-          <Link
+          <TrackLink
             href="https://buy.stripe.com/3cI5kC7lxaSo38p7MDdEs02"
             target="_blank"
             rel="noopener noreferrer"
+            location="final_cta"
             className={`inline-flex w-full max-w-lg items-center justify-center gap-2 rounded-xl px-8 py-5 text-lg sm:text-xl ${ACCENT_BTN}`}
           >
             今すぐ「脱出の設計図」を手に入れる →
-          </Link>
+          </TrackLink>
         </div>
       </section>
 

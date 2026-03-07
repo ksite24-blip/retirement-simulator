@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useMemo, useEffect, useRef } from "react";
+import { usePostHog } from "posthog-js/react";
 
 // ランダムにパラパラ動き続けるスロット数字
 function useSlotNumber(min: number, max: number, interval: number = 80) {
@@ -142,6 +143,7 @@ function getBenefitDaysSelf(yearsOfService: number): number {
 }
 
 export default function TaishokuSimulatorPage() {
+  const posthog = usePostHog();
   const [paidLeave, setPaidLeave] = useState<string>("10");
   const [salary, setSalary] = useState<string>("300000");
   const [bonusMonthsInput, setBonusMonthsInput] = useState<string>("6, 12");
@@ -503,6 +505,7 @@ export default function TaishokuSimulatorPage() {
           <p className="text-xs text-neutral-500 mb-4">3日間で、最短・円満に辞めるためのノウハウが詰まったノートを見る</p>
           <Link
             href="/guide"
+            onClick={() => posthog?.capture('simulator_cta_clicked', { location: 'bottom' })}
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-5 text-lg font-black text-white shadow-[0_6px_0_#065f46] transition-all active:translate-y-1 active:shadow-[0_2px_0_#065f46] hover:bg-emerald-400"
           >
             今の職場を脱出する計画を立てる →
