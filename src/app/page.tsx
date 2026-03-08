@@ -499,6 +499,32 @@ export default function TaishokuSimulatorPage() {
           </div>
         </section>
 
+        {/* LINE登録ボックス */}
+        <div className="mb-4 rounded-2xl border-2 border-green-400 bg-green-50 p-5 text-center">
+          <p className="text-xs font-bold text-green-600 mb-1">🎁 無料プレゼント</p>
+          <p className="text-base font-black text-neutral-800 mb-1">
+            あなたの ¥{result ? Math.round(result.totalBenefit).toLocaleString() : "---"} を<br />
+            確実に受け取るための<br />
+            <span className="text-green-600">チェックリストを無料配布中</span>
+          </p>
+          <div className="my-3 text-left inline-block">
+            <p className="text-xs text-neutral-600 mb-1">✅ 退職前にやるべき手続きリスト</p>
+            <p className="text-xs text-neutral-600 mb-1">✅ 申請を忘れると損する給付金一覧</p>
+            <p className="text-xs text-neutral-600">✅ 工場を辞めた人の3日間ロードマップ</p>
+          </div>
+          <a
+            href="https://line.me/R/ti/p/%40156qjqbm"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => posthog?.capture('line_register_clicked')}
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#06C755] px-6 py-4 text-base font-black text-white shadow-[0_4px_0_#048a3a] transition-all active:translate-y-1 active:shadow-[0_2px_0_#048a3a] hover:bg-[#05b54c]"
+          >
+            <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white shrink-0"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.67 5.77 4.24 7.45L5.5 22l4.08-1.97C10.32 20.33 11.15 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+            LINEで無料で受け取る
+          </a>
+          <p className="mt-2 text-xs text-neutral-400">登録無料・いつでも解除できます</p>
+        </div>
+
         {/* CTA */}
         <div className="mb-6 rounded-2xl bg-white p-5 shadow-md text-center">
           <p className="text-sm font-bold text-neutral-700 mb-1">📋 次のステップ</p>
