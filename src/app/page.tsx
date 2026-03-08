@@ -503,7 +503,7 @@ export default function TaishokuSimulatorPage() {
         <div className="mb-4 rounded-2xl border-2 border-green-400 bg-green-50 p-5 text-center">
           <p className="text-xs font-bold text-green-600 mb-1">🎁 無料プレゼント</p>
           <p className="text-base font-black text-neutral-800 mb-1">
-            あなたの ¥{result ? Math.round(result.totalBenefit).toLocaleString() : "---"} を<br />
+            あなたの ¥{result ? Math.round(result.unemploymentTotal).toLocaleString() : "---"} を<br />
             確実に受け取るための<br />
             <span className="text-green-600">チェックリストを無料配布中</span>
           </p>
