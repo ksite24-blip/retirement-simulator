@@ -525,19 +525,6 @@ export default function TaishokuSimulatorPage() {
           <p className="mt-2 text-xs text-neutral-400">登録無料・いつでも解除できます</p>
         </div>
 
-        {/* CTA */}
-        <div className="mb-6 rounded-2xl bg-white p-5 shadow-md text-center">
-          <p className="text-sm font-bold text-neutral-700 mb-1">📋 次のステップ</p>
-          <p className="text-xs text-neutral-500 mb-4">3日間で、最短・円満に辞めるためのノウハウが詰まったノートを見る</p>
-          <Link
-            href="/guide"
-            onClick={() => posthog?.capture('simulator_cta_clicked', { location: 'bottom' })}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-6 py-5 text-lg font-black text-white shadow-[0_6px_0_#065f46] transition-all active:translate-y-1 active:shadow-[0_2px_0_#065f46] hover:bg-emerald-400"
-          >
-            今の職場を脱出する計画を立てる →
-          </Link>
-          <p className="mt-2 text-xs text-neutral-400">無料でご覧いただけます</p>
-        </div>
 
         {/* 免責 */}
         <footer className="pb-8">
