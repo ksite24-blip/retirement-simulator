@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useMemo, useEffect, useRef } from "react";
 import { usePostHog } from "posthog-js/react";
+import { getUtmParams } from "@/lib/utm";
 
 // ランダムにパラパラ動き続けるスロット数字
 function useSlotNumber(min: number, max: number, interval: number = 80) {
@@ -516,7 +517,7 @@ export default function TaishokuSimulatorPage() {
             href="https://line.me/R/ti/p/%40156qjqbm"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => posthog?.capture('line_register_clicked')}
+            onClick={() => posthog?.capture('line_register_clicked', { ...getUtmParams() })}
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#06C755] px-6 py-4 text-base font-black text-white shadow-[0_4px_0_#048a3a] transition-all active:translate-y-1 active:shadow-[0_2px_0_#048a3a] hover:bg-[#05b54c]"
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white shrink-0"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.67 5.77 4.24 7.45L5.5 22l4.08-1.97C10.32 20.33 11.15 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>

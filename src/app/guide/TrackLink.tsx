@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import posthog from "posthog-js";
+import { getUtmParams } from "@/lib/utm";
 
 type Props = {
   href: string;
@@ -19,7 +20,7 @@ export function TrackLink({ href, className, children, location, target, rel }: 
       target={target}
       rel={rel}
       className={className}
-      onClick={() => posthog.capture("purchase_button_clicked", { location })}
+      onClick={() => posthog.capture("purchase_button_clicked", { location, ...getUtmParams() })}
     >
       {children}
     </Link>
