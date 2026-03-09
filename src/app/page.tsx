@@ -182,7 +182,8 @@ export default function TaishokuSimulatorPage() {
 
     const hasRestriction = leaveReason === "self";
     const unemploymentTotal = benefitDaily * benefitDays;
-    const restrictionStartDate = hasRestriction ? addDays(freeFromDate, 7) : null;
+    // 2025年4月以降：待期7日 + 給付制限1ヶ月（約30日）= 約37日後に支給開始
+    const restrictionStartDate = hasRestriction ? addDays(freeFromDate, 37) : null;
 
     const workDays = Math.min(NOTICE_DAYS, 22);
     const salaryUntilResign = dailyRate * workDays;
@@ -416,7 +417,7 @@ export default function TaishokuSimulatorPage() {
               </div>
               {result.hasRestriction && (
                 <p className="mt-2 text-xs text-amber-600 bg-amber-50 rounded-lg p-2">
-                  ⚠️ 自己都合の場合、給付制限（約3ヶ月）があります。
+                  ⚠️ 自己都合の場合、給付制限があります（2025年4月以降の退職は原則1ヶ月）。
                 </p>
               )}
             </div>
