@@ -456,6 +456,24 @@ export default function TaishokuSimulatorPage() {
               )}
             </div>
 
+            {/* LINE登録ミニバナー（結果直下） */}
+            <a
+              href="https://line.me/R/ti/p/%40156qjqbm"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => posthog?.capture('line_register_clicked', { location: 'mid', ...getUtmParams() })}
+              className="flex items-center justify-between gap-3 rounded-2xl bg-[#06C755] px-4 py-3 shadow-md active:opacity-80"
+            >
+              <div className="flex items-center gap-2">
+                <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white shrink-0"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.67 5.77 4.24 7.45L5.5 22l4.08-1.97C10.32 20.33 11.15 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+                <div>
+                  <p className="text-xs font-black text-white">この金額を確実に受け取る方法</p>
+                  <p className="text-xs text-green-100">LINEで無料チェックリストを受け取る →</p>
+                </div>
+              </div>
+              <span className="text-white font-black text-lg shrink-0">🎁</span>
+            </a>
+
             {/* 有給 */}
             <div className="rounded-2xl bg-white p-5 shadow-md border-l-4 border-emerald-500">
               <p className="text-xs font-bold text-emerald-600 uppercase tracking-wider">有給休暇の価値</p>
@@ -528,11 +546,25 @@ export default function TaishokuSimulatorPage() {
 
 
         {/* 免責 */}
-        <footer className="pb-8">
+        <footer className="pb-24">
           <p className="text-center text-xs leading-relaxed text-neutral-400">
             本シミュレーションは目安であり、実際の給付額・給付日数・社会保険は就業規則・雇用保険法等に基づき異なる場合があります。確定はハローワーク・年金事務所等でご確認ください。
           </p>
         </footer>
+      </div>
+
+      {/* スティッキーLINEバナー（常時表示） */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg px-4 py-3">
+        <a
+          href="https://line.me/R/ti/p/%40156qjqbm"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => posthog?.capture('line_register_clicked', { location: 'sticky', ...getUtmParams() })}
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#06C755] px-4 py-3 text-sm font-black text-white shadow-[0_4px_0_#048a3a] active:translate-y-1 active:shadow-[0_2px_0_#048a3a]"
+        >
+          <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white shrink-0"><path d="M12 2C6.48 2 2 6.03 2 11c0 3.07 1.67 5.77 4.24 7.45L5.5 22l4.08-1.97C10.32 20.33 11.15 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+          🎁 無料チェックリストをLINEで受け取る
+        </a>
       </div>
     </main>
   );
